@@ -1,0 +1,24 @@
+DATABASE
+
+A large amount of data stored in a computer 
+
+DBMS
+
+The basic software that supports the managment of this data 
+
+Database as mediator between humans and data 
+                                    ____          
+_O_                                |    |DB
+ | --------------DBMS--------------|____|
+/ \
+
+
+Logicial data models 
+
+hierarchical 
+relational 
+object oriented 
+
+
+Data Definition language(DDL) for specifying the structural aspects of the data 
+Data manipulation language(DML) for accessing and updating it 
