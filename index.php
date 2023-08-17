@@ -1,49 +1,41 @@
 <?php 
 
-class Collection 
-{
-    protected array $items;
-
-    public function __construct(array $items)
+abstract class AchivementType
+{   
+    public function name()
     {
-        $this->items = $items;
+        $class = (new ReflectionClass($this))->getShortName();
+
+        return trim(preg_replace('/[A-Z]/', ' $0', $class));
     }
 
-    public function sum($key)
+    public function icon()
     {
-        // return array_sum(array_map(function($item) use ($key){
-        //     return $item->$key;
-        // },$this->items));
+        return strtolower(str_replace(' ','-',$this->name())).'.png';
+    }
 
-        return array_sum(array_column($this->items,$key));
+    abstract public function qualifier($user);
+
+}
+
+class FirstThousandPoint extends AchivementType
+{
+    public function qualifier($user)
+    {
+        return $user.' does achive';
     }
 }
 
-class VideosCollection extends Collection 
+class FirstBestAnswer extends AchivementType
 {
-    public function length()
+    public function qualifier($user)
     {
-        return $this->sum('length');
+        
     }
 }
 
 
-class Video 
-{
-    public $title;
-    public $length;
-
-    public function __construct($title,$length)
-    {
-        $this->title = $title;
-        $this->length = $length;
-    }
-}
-
-$collection = new VideosCollection([
-    new Video('Video 1', 100),
-    new Video('Video 2', 200),
-    new Video('Video 3', 300)
-]);
-
-echo $collection->length();
+$achivement = new FirstThousandPoint();
+echo $achivement->name();
+echo $achivement->icon();
+echo $achivement->qualifier('mama');
