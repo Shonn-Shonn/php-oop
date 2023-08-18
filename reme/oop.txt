@@ -1,0 +1,15 @@
+The process of creating a new object -> instantiation 
+
+$app = new FbAccount();
+
+Properties -> public $name; 
+
+Methods -> public function methodName()
+
+abstract -> abstract public function methodName()
+
+A CLASS IS A BLUEPRINT FOR CREATING OBJECTS;
+
+new keyword to create an object from a class
+
+$this variable reference the current object of the class

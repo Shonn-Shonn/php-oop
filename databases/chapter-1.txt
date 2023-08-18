@@ -7,6 +7,8 @@ DBMS
 The basic software that supports the managment of this data 
 
 Database as mediator between humans and data 
+
+
                                     ____          
 _O_                                |    |DB
  | --------------DBMS--------------|____|
@@ -22,3 +24,6 @@ object oriented
 
 Data Definition language(DDL) for specifying the structural aspects of the data 
 Data manipulation language(DML) for accessing and updating it 
+
+DDL -> CREATE DROP ALTER TRUNCATE RENAME
+DML -> INSERT UPDATE DELETE CALL EXPAIN CALL LOCK
