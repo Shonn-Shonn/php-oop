@@ -1,37 +1,34 @@
 <?php 
 
+abstract class Animal{
+    //child classes must implement this 
+    abstract function prey();
 
-interface Newsletter
-{
-    public function subscribe($email);
-}
-
-class CampaignMonitor implements Newsletter
-{
-    public function subscribe($email)
+    public function run()
     {
-        die('subscribing with Campaign Monitor.'.$email);
+        echo 'I am running';
     }
 }
 
-class Drip implements Newsletter 
-{
-    public function subscribe($email)
+class Dog extends Animal{
+    public function prey()
     {
-        die('subscribing with Drip'.$email);
+        echo "I killed the cat!";
     }
 }
 
-class NewsletterSubscriptionsController
-{
-    public function store($newLetter)
+class Cat extends Animal{
+    public function prey()
     {
-        $email = 'phyumaung423@gmail.com';
-        $newLetter->subscribe($email);
+        echo "I killed the rat !";
     }
-
 }
 
-$controller = new NewsletterSubscriptionsController();
+$dog = new Dog();
+$cat = new Cat();
 
-$controller->store(new Drip());
+$dog->prey();
+$cat->prey();
+
+$dog->run();
+$cat->run();
