@@ -1,41 +1,29 @@
-<?php 
+<?php
 
-abstract class AchivementType
-{   
-    public function name()
-    {
-        $class = (new ReflectionClass($this))->getShortName();
-
-        return trim(preg_replace('/[A-Z]/', ' $0', $class));
-    }
-
-    public function icon()
-    {
-        return strtolower(str_replace(' ','-',$this->name())).'.png';
-    }
-
-    abstract public function qualifier($user);
-
-}
-
-class FirstThousandPoint extends AchivementType
+class BankAccount 
 {
-    public function qualifier($user)
+    public  $accountNumber;
+
+    public $balance;
+
+    public function deposit($amount)
     {
-        return $user.' does achive';
+        if($amount > 0){
+            $this->balance += $amount;
+        }
+    }
+
+    public function withdraw($amount)
+    {
+        if($amount <= $this->balance){
+            $this->balance -= $amount;
+        }
+
+        return false;
     }
 }
 
-class FirstBestAnswer extends AchivementType
-{
-    public function qualifier($user)
-    {
-        
-    }
-}
+$account = new BankAccount();
 
-
-$achivement = new FirstThousandPoint();
-echo $achivement->name();
-echo $achivement->icon();
-echo $achivement->qualifier('mama');
+echo $account->accountNumber = 1;
+echo $account->balance = 1;
