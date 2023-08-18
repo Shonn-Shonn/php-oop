@@ -1,29 +1,37 @@
-<?php
+<?php 
 
-class BankAccount 
+
+interface Newsletter
 {
-    public  $accountNumber;
+    public function subscribe($email);
+}
 
-    public $balance;
-
-    public function deposit($amount)
+class CampaignMonitor implements Newsletter
+{
+    public function subscribe($email)
     {
-        if($amount > 0){
-            $this->balance += $amount;
-        }
-    }
-
-    public function withdraw($amount)
-    {
-        if($amount <= $this->balance){
-            $this->balance -= $amount;
-        }
-
-        return false;
+        die('subscribing with Campaign Monitor.'.$email);
     }
 }
 
-$account = new BankAccount();
+class Drip implements Newsletter 
+{
+    public function subscribe($email)
+    {
+        die('subscribing with Drip'.$email);
+    }
+}
 
-echo $account->accountNumber = 1;
-echo $account->balance = 1;
+class NewsletterSubscriptionsController
+{
+    public function store($newLetter)
+    {
+        $email = 'phyumaung423@gmail.com';
+        $newLetter->subscribe($email);
+    }
+
+}
+
+$controller = new NewsletterSubscriptionsController();
+
+$controller->store(new Drip());
