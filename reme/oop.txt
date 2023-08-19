@@ -13,3 +13,13 @@ A CLASS IS A BLUEPRINT FOR CREATING OBJECTS;
 new keyword to create an object from a class
 
 $this variable reference the current object of the class
+
+
+SHOULD USE encapsulation 
+
+data protection 
+->by defining properties as private or protected
+you restrict access to those properties only through
+specific methods(getters and setters)
+------PREVENT unauthorized modifications
+
