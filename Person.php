@@ -1,31 +1,44 @@
 <?php 
 
-class Person{
-    private $name;
-    protected $age;
+//encapsulation is like restruction of access
 
-    public function getName(){
-        return $this->name;
-    }
+class Person 
+{
+    public $name; 
 
-    public function setName($name){
+    public function __construct($name)
+    {
         $this->name = $name;
     }
 
-    public function getAge(){
-        return $this->age;
+    public function job()
+    {
+        return 'software developer';
     }
 
-    public function setAge($age){
-        if($age >= 0){
-            $this->age = $age;
-        }
+    public function favoriteTeam()
+    {
+
     }
+
+    private function thingsThatKeepUpAtNight()
+    {
+        return 'Keep it up!';
+    }
+
 }
 
-$person = new Person();
-$person->setName('John');
-$person->setAge(25);
+$bob = new Person('Bob');
 
-echo "Name: ". $person->getName();
-echo "Age: ". $person->getAge();
+//var_dump($bob->thingsThatKeepUptNight());
+
+$method = new \ReflectionMethod(Person::class, 'thingsThatKeepUpAtNight');
+$method->setAccessible(true);
+
+$person = new Person('Bob');
+
+echo $method->invoke($person);
+
+$person->name = 'Khin Khin';
+
+echo $person->name;
